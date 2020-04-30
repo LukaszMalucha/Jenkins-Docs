@@ -1,5 +1,4 @@
 FROM python:3.7.6-buster
-
 ENV PYTHONUNBUFFERED 1
 
 
@@ -16,7 +15,6 @@ USER admin
 
 EXPOSE 4000
 
-ENTRYPOINT ['python']
+ENTRYPOINT ["python"]
 
-CMD ['app.py']
-
+CMD ["app.py"]
