@@ -1,0 +1,105 @@
+#################################### VIRTUAL BOX
+
+1. Settings - Network - Change to Bridge Adapter
+2. TO SSH WITH PUTTY:
+	sudo apt-get install openssh-server openssh-client
+3. ifconfig
+	sudo apt install net-tools
+
+4. Open PUTTY
+	sudo su (to not write sudo all the time)
+
+
+
+#################################### DOCKER INSTALL
+
+1. https://askubuntu.com/questions/1030179/package-docker-ce-has-no-installation-candidate-in-18-04
+
+	sudo apt install apt-transport-https ca-certificates curl software-properties-common
+	curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+	sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic test"
+	sudo apt update
+	sudo apt install docker-ce
+
+2. REMOVE CONTAINER
+	sudo docker stop 908 && sudo docker rm 908
+
+#################################### JENKINS
+
+1. JAVA 
+	sudo apt install openjdk-8-jdk
+
+2. INSTALL JENKINS - https://askubuntu.com/questions/1224093/trying-to-install-jenkins-on-ubuntu-18-04
+	wget -q -O - https://pkg.jenkins.io/debian/jenkins-ci.org.key | sudo apt-key add - 
+	echo "deb http://pkg.jenkins.io/debian-stable binary/" | sudo tee -a /etc/apt/sources.list.d/jenkins.list
+	sudo apt update
+	sudo apt install jenkins
+
+
+3. BRIDGE JENKINS FROM 8080 to 9090 PORT
+	sudo docker run -d -p 9090:8080 --name jenkins jenkins/jenkins
+	sudo docker ps
+	http://192.168.1.12:9090/
+
+4. GET JENKINS INITIAL PASSWORD
+	sudo docker logs <container id>
+	locate jenkins.log -> vi /var/log/jenkins/jenkins.log
+
+5. JENKINS RESTART
+	http://192.168.1.12:9090/restart
+
+#################################### GITLAB
+
+1. SETUP
+	sudo docker pull gitlab/gitlab-ce
+	sudo docker run -d -p 443:443 -p 80:80 --name gitlab1 gitlab/gitlab-ce
+	http://192.168.1.12/	(WAIT AS IT TAKES A MOMENT TO RESPOND)
+
+
+
+################################### FLASK DEPLOYMENT
+
+1. GIT CLONE
+	cd Documents
+	git clone https://github.com/LukaszMalucha/Jenkins-Docs
+
+2. BUILD DOCKER IMAGE
+	apt install docker-compose
+	docker-compose build
+	docker-compose up
+	http://192.168.1.12:5000/
+3. GET INSIDE CONTAINER (IF NEEDED)
+	docker exec -it mynlp /bin/sh
+	
+
+
+################################### JENKINS INTEGRATION
+
+1. VERSION CONTROL
+	Install GitLab Plugin in Jenkins
+	Go to http://192.168.1.12/login and create repo
+	sudo git remote rm origin
+	git init
+	git remote add origin http://192.168.1.12/root/jenkins
+	git add .
+	git commit -m "init"
+
+2. JENKINS PIPELINE
+	vi Jenkinsfile
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
