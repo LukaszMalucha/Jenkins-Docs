@@ -15,6 +15,6 @@ USER admin
 
 EXPOSE 4000
 
-ENTRYPOINT ["python"]
+ENTRYPOINT ["python3"]
 
 CMD ["app.py"]
