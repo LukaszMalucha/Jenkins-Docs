@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<header>
+  <div>
+    Result
+  </div>
+  <h2>Detector</h2>
+
+</header>
+<p>Results</p>
+<div>
+  {% if prediction == 1 %}
+  <h2>Negative</h2>
+  {% elif prediction == 0 %}
+  <h2>Positive</h2>
+  {% endif %}
+</div>
+
+
+</body>
+</html>

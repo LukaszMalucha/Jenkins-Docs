@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<header>
+  NLP Model
+</header>
+
+<div class="row">
+
+  <form action="{{url_for('predict')}}" method="POST">
+    <p>Enter Message</p>
+    <textarea name="message" id="" cols="50" rows="4"></textarea>
+    <br/>
+
+    <input type="submit" class="btn-info" value="predict">
+
+
+  </form>
+
+
+</div>
+
+
+</body>
+</html>
