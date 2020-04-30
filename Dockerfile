@@ -4,7 +4,7 @@ RUN pip install --upgrade pip
 WORKDIR /app
 
 COPY . /app
-RUN sudo apt-get install build-essential python3-dev
+RUN apk add --update build-essential python3-dev
 
 RUN pip install -r requirements.txt
 
