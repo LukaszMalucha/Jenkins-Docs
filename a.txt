@@ -1,5 +1,5 @@
 Flask==1.1.1
-nltk==3.3
+nltk==3.4.5
 numpy==1.16.4
 pandas==0.25.2
 scikit-image==0.15.0
